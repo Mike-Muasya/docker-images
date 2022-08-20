@@ -4,20 +4,20 @@ receivers:
   - name: 'slack-notifications'
     slack_configs:
     - send_resolved: true
-      username: 'Prometheus'
-      channel: '#monitoring-infrastructure'
-      api_url: 'https://hooks.slack.com/services/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'
-      title: |-
-       [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alert$       {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
-         {{" "}}(
-         {{- with .CommonLabels.Remove .GroupLabels.Names }}
-           {{- range $index, $label := .SortedPairs -}}
-             {{ if $index }}, {{ end }}
-             {{- $label.Name }}="{{ $label.Value -}}"
-           {{- end }}
-         {{- end -}}
-         )
-       {{- end }}
-      text: >-
-       {{ range .Alerts -}}
-       *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
+      # username: 'Prometheus'
+      # channel: '#monitoring-infrastructure'
+      # api_url: 'https://...'
+      # title: |-
+      #  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alert$       {{- if gt (len .CommonLabels) (len .GroupLabels) -}}
+      #    {{" "}}(
+      #    {{- with .CommonLabels.Remove .GroupLabels.Names }}
+      #      {{- range $index, $label := .SortedPairs -}}
+      #        {{ if $index }}, {{ end }}
+      #        {{- $label.Name }}="{{ $label.Value -}}"
+      #      {{- end }}
+      #    {{- end -}}
+      #    )
+      #  {{- end }}
+      # text: >-
+      #  {{ range .Alerts -}}
+      #  *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
